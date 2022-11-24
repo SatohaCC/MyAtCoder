@@ -1,11 +1,17 @@
 import io
+import sys
 
-_INPUT = """\ 
+_INPUT = """\
+oxo
 
 """
-
 sys.stdin = io.StringIO(_INPUT)
+
 # ---------------------------------------------------------------------------------------------------------
-n = int(input())
-n, x, a, y, b = map(int, input().split())
-a = list(map(int, input().split()))
+
+n = input()
+count = 0
+for i in n:
+    if i == "o":
+        count += 1
+print(700 + 100 * count)

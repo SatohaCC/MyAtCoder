@@ -1,11 +1,13 @@
 import io
+import sys
 
-_INPUT = """\ 
-
+_INPUT = """\
+101
 """
-
 sys.stdin = io.StringIO(_INPUT)
+
 # ---------------------------------------------------------------------------------------------------------
-n = int(input())
-n, x, a, y, b = map(int, input().split())
-a = list(map(int, input().split()))
+
+n = input()
+
+print(n.count("1"))
