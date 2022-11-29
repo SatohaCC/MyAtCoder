@@ -2,21 +2,17 @@ import io
 import sys
 
 _INPUT = """\
+v
 
 
 """
 sys.stdin = io.StringIO(_INPUT)
 
-
-
 # ---------------------------------------------------------------------------------------------------------
 
+s = input()
 
-n = int(input())
+v = s.count("v")
+w = s.count("w")
 
-n,x, a,y, b = map(int, input().split())
-
-a = list(map(int, input().split()))
-
-
-
+print(v + w * 2)
