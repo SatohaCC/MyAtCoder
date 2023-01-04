@@ -33,21 +33,21 @@ def bfs(pos: int) -> list:
     "幅優先探索をおこない、頂点 pos からの距離を求める"
     dist = [10000] * N
     dist[pos] = 0
-    q = deque([pos])
+    Q = deque([pos])
 
-    while q:
-        v = q.popleft()
+    while Q:
+        v = Q.popleft()
         for nxt in g[v]:
             if dist[nxt] == 10000:
                 dist[nxt] = dist[v] + 1
-                q.append(nxt)
+                Q.append(nxt)
 
     return dist
 
 
 N = int(input())
 
-# 隣接行列の作成
+# 隣接行列の作成・入力
 g = [[] for _ in range(N)]
 for _ in range(N - 1):
     a, b = map(int, input().split())
@@ -59,8 +59,13 @@ for _ in range(N - 1):
 # 頂点 1 からの距離を求める
 dist = bfs(0)
 
+
+print(dist)
 # 最も遠い頂点からもう一度幅優先探索を行う
 max_dist = max(dist)
+print(max_dist)
+
+
 for i in range(N):
     if dist[i] == max_dist:
         # 木の直径を求める
@@ -80,5 +85,6 @@ for i in range(N):
 
 # 木の中心をソートして出力する
 center.sort()
+print(center)
 for i in center:
     print(i)

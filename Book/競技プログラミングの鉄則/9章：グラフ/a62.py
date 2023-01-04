@@ -29,11 +29,11 @@ sys.setrecursionlimit(120000)
 def dfs(pos, G, visited):
     # 頂点nexに進むときはdfsを再帰呼び出し
     visited[pos] = True
-    print("現在位置：", pos)
+    # print("現在位置：", pos)
     for i in G[pos]:
         if visited[i] == False:
             dfs(i, G, visited)
-        print(i, visited)
+        # print(i, visited)
 
 
 n, m = map(int, input().split())
@@ -45,7 +45,7 @@ for i in range(m):
     G[a].append(b)
     G[b].append(a)
 
-print(G)
+# print(G)
 
 # 深さ優先探索
 visited = [False] * (n + 1)
