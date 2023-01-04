@@ -23,10 +23,11 @@ sys.stdin = io.StringIO(_INPUT)
 import sys
 
 sys.setrecursionlimit(120000)
-
+ans = []
 # 深さ優先探索を行う関数
 # pos は現在位置、visited[x] は頂点 x が青色かどうかを表す真偽値
 def dfs(pos, G, visited):
+    ans.append(pos)
     # 頂点nexに進むときはdfsを再帰呼び出し
     visited[pos] = True
     # print("現在位置：", pos)
@@ -63,3 +64,4 @@ if answer == True:
     print("The graph is connected.")
 else:
     print("The graph is not connected.")
+print(ans)
