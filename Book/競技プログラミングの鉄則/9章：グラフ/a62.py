@@ -46,7 +46,7 @@ for i in range(m):
     G[a].append(b)
     G[b].append(a)
 
-# print(G)
+print(G)
 
 # 深さ優先探索
 visited = [False] * (n + 1)
