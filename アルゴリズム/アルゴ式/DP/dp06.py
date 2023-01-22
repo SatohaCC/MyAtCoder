@@ -2,8 +2,11 @@ import io
 import sys
 
 _INPUT = """\
-11 6
-2 4 6 8 10 12
+3 1001
+1 1
+2 1
+100 10
+
 """
 sys.stdin = io.StringIO(_INPUT)
 
