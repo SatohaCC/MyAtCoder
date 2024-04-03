@@ -2,8 +2,9 @@ import io
 import sys
 
 _INPUT = """\
-1 3
-346
+4 5
+1 6 3 1
+
 """
 sys.stdin = io.StringIO(_INPUT)
 
@@ -18,7 +19,7 @@ A = list(map(int, input().split()))
 gray = set()
 
 for a in A:
-    if  a <= K:
+    if a <= K:
         gray.add(a)
 
 ans = K * (K + 1) // 2 - sum(gray)
