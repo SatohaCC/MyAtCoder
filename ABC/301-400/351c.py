@@ -2,41 +2,45 @@ import io
 import sys
 
 _INPUT = """\
-ab
-
+5
+0 0 0 1 2
 """
 sys.stdin = io.StringIO(_INPUT)
 
-# ---------------------------------------------------------------------------------------------------------
-# https://qiita.com/hyouchun/items/c2a4aa2b5ff2c177f120#%E5%95%8F%E9%A1%8C-2
-#
-# ---------------------------------------------------------------------------------------------------------
-S = input()
 
-d = {}
+import math
+from collections import deque
 
-for i in range(len(S)):
-    if S[i] not in d:
-        d[S[i]] = 0
-    d[S[i]] += 1
+N = int(input())
+B = list(map(int, input().split()))
+A = deque()
 
-ans = {}
 
-for key, value in d.items():
+def action_always(A, i):
+    A.append(B[i])
 
-    if value not in ans:
-        ans[value] = 0
-    ans[value] += 1
 
-count = 0
+def action_A(stack):
+    return len(stack) <= 1
 
-for key, value in ans.items():
-    if value == 2 or value == 0:
-        continue
-    else:
-        count += 1
 
-if count == 0:
-    print("Yes")
-else:
-    print("No")
+def action_B(stack):
+    return 2 ** stack[-2] != 2 ** stack[-1]
+
+
+def action_C(stack):
+    if stack[-2] == stack[-1]:
+        tmp1 = stack.pop()
+        tmp2 = stack.pop()
+        sum_tmp = 2**tmp1 + 2**tmp2
+        x = int(math.log(sum_tmp, 2))
+        stack.append(x)
+        return True
+    return False
+
+
+for i in range(N):
+    action_always(A, i)
+    while len(A) > 1 and A[-2] == A[-1]:
+        action_C(A)
+print(len(A))
